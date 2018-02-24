@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Content, Button, Logo, } from "../../components/common";
+import { Button, Logo, } from "../../components/common";
 import { connect } from "react-redux";
 import * as Authentication from '../../actions/auth';
 import * as AuthTypes from '../../types/auth';
@@ -27,7 +27,7 @@ class SetPinCode extends Component {
 
     componentWillReceiveProps(nextProps) {
         console.log(nextProps.action + " == " + AuthTypes.PINCODE_ERROR + " && " + this.state.action + " === " + "PINCODE_SETTING");
-        if (nextProps.action == AuthTypes.PINCODE_ERROR && this.state.action === "PINCODE_SETTING") {
+        if (nextProps.action === AuthTypes.PINCODE_ERROR && this.state.action === "PINCODE_SETTING") {
             this.setState({ btnText: nextProps.error, action: "NULL" });
 
             setTimeout(() => {

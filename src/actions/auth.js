@@ -21,9 +21,7 @@ export function signin(props) {
                             type: AuthTypes.CODEBIRD,
                             payload: cb
                         });
-
-                        var win = window.open(auth_url, '_blank');
-                        win.focus();
+                        window.open(auth_url, '_blank');
                         props.history.push('/set-pin-code');
                     }
                 );

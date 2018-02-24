@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Content, Button, Logo } from "../../components/common";
+import { Button, Logo } from "../../components/common";
 import { connect } from "react-redux";
 import * as Authentication from '../../actions/auth';
 import "./styles.css";

@@ -1,37 +1,53 @@
 import React, { Component } from "react";
 import styles from "./styles.css";
-import {Button} from './../common'
-import classNames from "classnames";
+import { Button } from './../common';
+var moment = require('moment');
 
 class PopUp extends Component {
- 
-    constructor(props) {
-        super(props); 
-        this.state = {
-          isOpen: false,
-        };
-      }
 
-      openModal = () =>{
-        this.setState({isOpen : true})
-      }
-      closeModal = () =>{  
-        this.setState({isOpen : false})
-      }
-    
-      componentWillReceiveProps = (nextProps) => {
-        console.log(nextProps.isOpen);
-        
-          if(nextProps.isOpen===true){
-           this.openModal()
-          }else if(nextProps.isOpen===false){
-            this.closeModal()
-          }
-      }
- 
-    render() {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isOpen: false,
+    };
+  }
 
-        let modalStyle = classNames('')
+  openModal = () => {
+    this.setState({ isOpen: true })
+  }
+  closeModal = () => {
+    this.setState({ isOpen: false })
+  }
+
+  componentWillReceiveProps = (nextProps) => {
+    if (nextProps.isOpen === true) {
+      this.openModal()
+    } else if (nextProps.isOpen === false) {
+      this.closeModal()
+    }
+  }
+
+  replyTweet = () => {
+    this.props.setReplyTweet(this.refs.tweetpost.value, this.props.item);
+  }
+
+  render() {
+    let image = "";
+    if (
+      this.props.item &&
+      this.props.item.entities &&
+      this.props.item.entities.media &&
+      this.props.item.entities.media.length > 0
+    ) {
+      image = this.props.item.entities.media.map((item, i) => {
+        return (
+          <div key={i}>
+            <img style={{ width: '100%', marginTop: '20px' }} src={item.media_url} alt="profile"/>
+          </div>
+        );
+      });
+    }
+
     return (
       <div className={this.state.isOpen === true ? "overlay-popup" : 'overlay-popup-close'} >
         <a onClick={this.closeModal} className="close ">X</a>
@@ -40,43 +56,36 @@ class PopUp extends Component {
             <header>
               <div className="card-fakeimage">
                 <img
-                  src="http://a1.espncdn.com/combiner/i?img=/i/headshots/cricket/players/44936.png&h=108&w=108&scale=crop&transparent=true"
+                  src={this.props.item.user && this.props.item.user.profile_image_url}
                   className="popup-profile-image"
+                  alt="cover"
                 />
               </div>
               <div className="popup-text-info">
                 <h6 className="popup-profile-name f-z-16 f-w-medium f-c-dark-ash">
-                  &nbsp;AB de Villiers
+                  &nbsp;{this.props.item.user && this.props.item.user.name}
                 </h6>
-
                 <p>
-                  <i className="pop-profile-id f-z-11 f-w-bold f-c-light-ash" />&nbsp;@AB
+                  <i className="pop-profile-id f-z-11 f-w-bold f-c-light-ash" />&nbsp;{this.props.item.user && this.props.item.user.screen_name}
                 </p>
-                <p className="popup-profile-time f-z-11 f-w-regular f-c-light-ash">
-                  2013/11/11
-                </p>
+                {this.props.item.created_at && <p className="popup-profile-time f-z-11 f-w-regular f-c-light-ash">
+                  {moment(this.props.item.created_at).format('MMMM Do YYYY, h:mm:ss a')}
+                </p>}
               </div>
             </header>
             <div className="popup-content">
-              <p className="popup-profile-post  f-c-dark-ash f-z-12">
-                were mostly undone by the lack of pace from the Indian pair,
-                rather than their variations. "We struggled against Kuldeep but
-                he was in form, he took his chances, and we gave some soft
-                wickets away. I'm not sure if we struggled to pick him. His pace
-                has been good," Behardien said. "He has bowled a bit slower. Not
-                too many bowlers in our country bowl that slowly. Normally, when
-                we play on the Highveld, where wickets are quite good, you bowl
-                at quite a flatter pace with not a lot of revs on the ball."
-              </p>
-              <img style={{width:'100%',marginTop:'20px'}} src="http://a1.espncdn.com/combiner/i?img=%2Fi%2Fcricket%2Fcricinfo%2F1105130_900x506.jpg&w=375&h=211&scale=crop&cquality=40&location=origin" />
+              {this.props.item.text && <p className="popup-profile-post  f-c-dark-ash f-z-12">
+                {this.props.item.text}
+              </p>}
+              {image}
             </div>
             <div />
-            <textarea className="post-box" ref="tweetpost"></textarea> 
-               <div className="error" ref="tweetpostError"></div>
-               <div className="action-button">
-               <Button onClick={this.closeModal} >CLOSE</Button>&nbsp;
-               <Button info>REPLY</Button>
-               </div>
+            <textarea className="post-box" ref="tweetpost"></textarea>
+            <div className="error" ref="tweetpostError"></div>
+            <div className="action-button">
+              <Button onClick={this.closeModal} >CLOSE</Button>&nbsp;
+               <Button onClick={this.replyTweet} info>REPLY</Button>
+            </div>
           </article>
         </div>
       </div>

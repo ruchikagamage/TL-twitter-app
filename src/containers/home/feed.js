@@ -5,12 +5,21 @@ import PostBox from "./../../components/postBox";
 import { Loader } from "./../../components/common";
 import { connect } from "react-redux";
 import * as Timeline from '../../actions/timeline';
-import * as Auth from '../../actions/auth';
-var escapeHTML = require('escape-html');
+// import * as Auth from '../../actions/auth';
+import PopUp from './../../components/popup';
+
 
 
 
 class Feed extends Component {
+
+  constructor(props) {
+    super(props); 
+    this.state = {
+      isOpen: false,
+      item: {}
+    };
+  }
 
   componentWillMount = () => {
     this.props.dispatch(Timeline.getTimeline(this.props));
@@ -27,11 +36,20 @@ class Feed extends Component {
     //localStorage.clear();
   }
 
+  openReplyModel = (item) =>{
+    console.log("item ",item);
+    this.setState({isOpen: true, item: item})
+  }
+
+  getReplyTweet = (value, item) =>{
+    console.log("item ",value, item);
+  }
+
 
   render() {
 
     let feeds = this.props.feeds.map((item, i) => {
-      return (<Card item={item} key={i} />);
+      return (<Card item={item} key={i} openPopUp={this.openReplyModel}/>);
     });
     let boxStyle = { height: this.props.height, margin: "0px", padding: "0px" };
     let innerBoxStyle = { height: this.props.height - 30 };
@@ -39,6 +57,7 @@ class Feed extends Component {
       <div className="home-left-side" style={boxStyle}>
         <Navigation setLogout={this.getLogout} />
         <div className="feed-box" style={innerBoxStyle}>
+          <PopUp isOpen={this.state.isOpen} item={this.state.item} setReplyTweet={this.getReplyTweet}/>
           <PostBox getPost={this.setPost} />
           {feeds}
           {this.props.fetching && <Loader />}

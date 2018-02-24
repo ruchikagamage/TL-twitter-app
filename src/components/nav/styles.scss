@@ -1,44 +1,41 @@
-@import './../../styles/scss/_vb.scss';
+@import "./../../styles/scss/_vb.scss";
 
-.navbar{
-    overflow: hidden;
-    background-color: $white;
-    height:60px;
-    top: 0;
-    width: 100%;
-    margin: 0 auto;
-    border-bottom: 1px solid $low_ash ;
-    z-index: 999999;
-  
-  }
-  .login-user{
-    float: right;
-    margin-top: -28px;
-    right: 80px;
-    position: absolute;
-  
-  }
-.nav-info{
+.navbar {
+  overflow: hidden;
+  background-color: $white;
+  height: 60px;
+  top: 0;
+  width: 100%;
+  margin: 0 auto;
+  border-bottom: 1px solid $low_ash;
+  z-index: 999999;
+}
+.login-user {
+  float: right;
+  margin-top: -28px;
+  right: 80px;
+  position: absolute;
+}
+.logout-button {
+  cursor: pointer;
+}
+.nav-info {
   padding-right: 40px;
 }
-.logout{
+.logout {
   float: right;
   width: 20px;
   margin-left: 20px;
   margin-top: -30px;
 }
 
-.nav-brand{
+.nav-brand {
   padding-left: 40px;
   margin-top: 15px;
 }
 
 @media (max-width: 720px) {
-
-  .navbar{
+  .navbar {
     position: fixed;
-
-  
   }
-
 }

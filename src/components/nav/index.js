@@ -16,8 +16,8 @@ class Navigation extends Component {
             <Logo size={30} />
           </div>
         <div className="nav-info">         
-          <a href="#" onClick={this.logout.bind(this)} className="logout-button">
-            <img src={logout} className="logout" />
+          <a  onClick={this.logout.bind(this)} className="logout-button">
+            <img src={logout} className="logout" alt="log out"/>
           </a>
           <h3 className="f-c-light-ash f-w-regular f-z-12 login-user l-s-1" >
             {localStorage.getItem('screen_name')}

@@ -1,13 +1,13 @@
 # TL-twitter-app
 Simple twitter activities base applicatio
 
-instuctions
+Instuctions
 ===============
 
 First step 
-npm install 
+Enter --->  npm install 
 ===============
 
 Second step
-npm start
+Enter --->  npm start
 ===============

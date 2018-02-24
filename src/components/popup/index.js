@@ -5,26 +5,8 @@ var moment = require('moment');
 
 class PopUp extends Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      isOpen: false,
-    };
-  }
-
-  openModal = () => {
-    this.setState({ isOpen: true })
-  }
-  closeModal = () => {
-    this.setState({ isOpen: false })
-  }
-
-  componentWillReceiveProps = (nextProps) => {
-    if (nextProps.isOpen === true) {
-      this.openModal()
-    } else if (nextProps.isOpen === false) {
-      this.closeModal()
-    }
+  modelClose = () => {
+    this.props.modelClose(false);
   }
 
   replyTweet = () => {
@@ -42,15 +24,15 @@ class PopUp extends Component {
       image = this.props.item.entities.media.map((item, i) => {
         return (
           <div key={i}>
-            <img style={{ width: '100%', marginTop: '20px' }} src={item.media_url} alt="profile"/>
+            <img style={{ width: '100%', marginTop: '20px' }} src={item.media_url} alt="profile" />
           </div>
         );
       });
     }
 
     return (
-      <div className={this.state.isOpen === true ? "overlay-popup" : 'overlay-popup-close'} >
-        <a onClick={this.closeModal} className="close ">X</a>
+      <div className={this.props.isOpen === true ? "overlay-popup" : 'overlay-popup-close'} >
+        <a onClick={this.modelClose} className="close ">X</a>
         <div className="popup-box-conitent" >
           <article className="post">
             <header>
@@ -83,7 +65,7 @@ class PopUp extends Component {
             <textarea className="post-box" ref="tweetpost"></textarea>
             <div className="error" ref="tweetpostError"></div>
             <div className="action-button">
-              <Button onClick={this.closeModal} >CLOSE</Button>&nbsp;
+              <Button onClick={this.modelClose} >CLOSE</Button>&nbsp;
                <Button onClick={this.replyTweet} info>REPLY</Button>
             </div>
           </article>

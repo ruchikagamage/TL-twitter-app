@@ -41,6 +41,10 @@ class Feed extends Component {
     this.setState({isOpen: true, item: item})
   }
 
+  closePopUpModel = (status) => {
+    this.setState({isOpen: status})
+  }
+
   getReplyTweet = (value, item) =>{
     console.log("item ",value, item);
   }
@@ -57,7 +61,7 @@ class Feed extends Component {
       <div className="home-left-side" style={boxStyle}>
         <Navigation setLogout={this.getLogout} />
         <div className="feed-box" style={innerBoxStyle}>
-          <PopUp isOpen={this.state.isOpen} item={this.state.item} setReplyTweet={this.getReplyTweet}/>
+          <PopUp isOpen={this.state.isOpen} modelClose={this.closePopUpModel} item={this.state.item} setReplyTweet={this.getReplyTweet}/>
           <PostBox getPost={this.setPost} />
           {feeds}
           {this.props.fetching && <Loader />}

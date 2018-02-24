@@ -4,12 +4,10 @@ Simple twitter activities base applicatio
 instuctions
 ===============
 
-first step 
-===============
+First step 
 npm install 
 ===============
 
-second step
-===============
+Second step
 npm start
 ===============

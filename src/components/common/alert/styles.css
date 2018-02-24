@@ -1,8 +1,0 @@
-.alert-box {
-  width: 600px;
-  background-color: brown;
-  height: 60px;
-  position: absolute;
-  margin: 0 auto;
-  padding: 0px 20% 0 20%;
-  z-index: 9999; }

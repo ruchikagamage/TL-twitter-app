@@ -1,0 +1,21 @@
+@import './../../styles/scss/_vb.scss';
+
+.post-box{
+    border: 1px solid $low_ash;
+    width: 100%;
+    resize: none;
+    margin-top: 20px;
+    color: $ash;
+    transition: all 0.5s ease;
+}
+.post-box:focus{
+    border: 1px solid $twitter-blue;
+    width: 100%;
+    resize: none;
+    margin-top: 20px;
+
+}
+.action-button{
+    text-align: right;
+    margin: 10px 0px 0px 0px;
+}

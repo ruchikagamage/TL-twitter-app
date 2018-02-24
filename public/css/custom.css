@@ -1,0 +1,13 @@
+.line-height {
+    margin-top: 10px;
+}
+
+.custom-center {
+    display: block;
+    text-align: -webkit-center;
+}
+
+.custom-signup-btn {
+    width: auto;
+    background-color: rgb(red, green, rgb(194, 201, 226))
+}

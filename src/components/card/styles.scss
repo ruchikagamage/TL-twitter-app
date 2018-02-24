@@ -1,0 +1,100 @@
+@import './../../styles/scss/_vb.scss';
+
+.card-profile-image-box {
+  width: 70px;
+}
+.card-profile-image {
+  border-radius: 100%;
+}
+.card-profile-info {
+  margin-left: 70px;
+  margin-top: -50px;
+}
+.card-profile-name {
+  padding: 0px;
+  margin: 0px;
+  
+}
+.card-profile-id {
+  padding: 0px;
+  margin: 0px;
+  margin-right:10px;
+  float: left;
+}
+
+.card-profile-post {
+  margin: 0px;
+  margin-top: 10px;
+}
+.card-image{
+     width: 100%;
+     border-radius: 3px;
+     margin-top: 10px;
+}
+
+
+.post{
+  padding: 5px 5px 0px 5px; 
+}
+
+
+ .post-content {
+
+  clear: both;
+  margin-top: -0px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+
+}
+.fakeimage {
+  width: 50px;
+  height: 50px;
+  float: left;
+
+}
+.post header p {
+  font-size: 13px;
+  color: $dark_ash;
+  float: left;
+}
+.post-action-panal{
+  width: 100%;
+  margin-top: 10px;
+  border-top: 1px solid $low_ash ;
+  padding-top: 10px;
+   padding-bottom: 30px;
+}
+.post-action-button{
+  width: 100%;
+
+  display: flex;
+  padding: 5px;
+  border-radius: 3px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.5s ease;
+  color: $ash ;
+ 
+}
+.post-action-button:hover{
+  background-color: $low_ash;
+  cursor: pointer;
+  color: $dark_ash;
+}
+.post-action-button-icon{
+  width: 20px;
+  margin-left: 10px;
+}
+.comment-box{
+  border: 1px solid $low_ash !important;
+  border-radius: 50px !important;
+  margin-top: 20px;
+}
+
+@media (max-width: 720px) {
+  .post-action-panal {
+    height: 100px;
+    margin-bottom: 20px;
+  }
+}

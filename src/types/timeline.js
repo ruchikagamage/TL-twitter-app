@@ -1,0 +1,5 @@
+module.exports = {
+    FEEDS: 'FEEDS',
+    FEEDS_ERROR: 'FEEDS_ERROR',
+    FETCHING_FEEDS: 'FETCHING_FEEDS' 
+}

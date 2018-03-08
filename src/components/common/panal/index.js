@@ -8,7 +8,7 @@ const Panal = props => {
          
 
     return (
-        <div className={panalStyle}>
+        <div className={panalStyle} style={props.retweetedStyle ===true ? {backgroundColor: '#eaeaea59'} : {}}>
             {props.children}
         </div>
     );

@@ -35,13 +35,11 @@ class Card extends Component {
           </div>
         );
       });
-    }
-
-    const retweetedStyle = this.props.item.retweeted ? { backgroundColor: '#CCC'} : {} ; 
+    } 
 
     return (
-      <Panal>
-        <article className="post" style={retweetedStyle}>
+      <Panal retweetedStyle={this.props.item.retweeted}>
+        <article className="post" >
           <header>
             <div className="fakeimage">
             <img

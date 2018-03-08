@@ -4,7 +4,7 @@ const Codebird = require("codebird");
 
 export function getTimeline() {
 
-    var cb = new Codebird;
+    var cb = new Codebird();
     cb.setConsumerKey('JeXsJLwL2FQachen6NWNkA1EZ', 'xMeOQmrFc1XGtbHcG5cnCSqCvEPjbb5YoLZ2Jz72BwleqJEthn');
 
     return function (dispatch) {
@@ -35,7 +35,7 @@ export function getTimeline() {
 
 export function tweet(tweet) {
 
-    var cb = new Codebird;
+    var cb = new Codebird();
     cb.setConsumerKey('JeXsJLwL2FQachen6NWNkA1EZ', 'xMeOQmrFc1XGtbHcG5cnCSqCvEPjbb5YoLZ2Jz72BwleqJEthn');
 
     return function (dispatch) {
@@ -80,7 +80,7 @@ export function tweet(tweet) {
 
 export function replyToTweet(tweet, tweetId) {
 
-    var cb = new Codebird;
+    var cb = new Codebird();
     cb.setConsumerKey('JeXsJLwL2FQachen6NWNkA1EZ', 'xMeOQmrFc1XGtbHcG5cnCSqCvEPjbb5YoLZ2Jz72BwleqJEthn');
 
     return function (dispatch) {
@@ -137,7 +137,6 @@ export function reTweet(item) {
             `statuses_retweet_ID`,
             { "id": item.id_str },
             function (reply, rate, err) {
-                console.log(reply);
                 if (err) {
                     dispatch({
                         type: TimeLineTypes.RETWEET_ERROR,

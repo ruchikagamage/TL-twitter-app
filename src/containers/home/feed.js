@@ -49,11 +49,15 @@ class Feed extends Component {
     console.log("item ",value, item);
   }
 
+  getRetweet = (item) =>{
+    this.props.dispatch(Timeline.reTweet(item));
+  }
+
 
   render() {
 
     let feeds = this.props.feeds.map((item, i) => {
-      return (<Card item={item} key={i} openPopUp={this.openReplyModel}/>);
+      return (<Card item={item} key={i} openPopUp={this.openReplyModel} setRetweet={this.getRetweet}/>);
     });
     let boxStyle = { height: this.props.height, margin: "0px", padding: "0px" };
     let innerBoxStyle = { height: this.props.height - 30 };
@@ -74,7 +78,9 @@ class Feed extends Component {
 function mapStateToProps(state) {
   return {
     feeds: state.timeline.feeds,
-    fetching: state.timeline.fetching
+    fetching: state.timeline.fetching,
+    data: state.timeline.data,
+    action: state.timeline.action
   };
 }
 

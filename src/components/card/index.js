@@ -12,6 +12,14 @@ class Card extends Component {
     this.props.openPopUp(item);  
   }
 
+  retweet = (item) =>{
+    if (item.retweeted) {
+      alert('You have already retweeted');
+      return;
+    }
+    this.props.setRetweet(item);
+  }
+
 
   render() {
     let image = "";
@@ -29,10 +37,11 @@ class Card extends Component {
       });
     }
 
+    const retweetedStyle = this.props.item.retweeted ? { backgroundColor: '#CCC'} : {} ; 
 
     return (
       <Panal>
-        <article className="post">
+        <article className="post" style={retweetedStyle}>
           <header>
             <div className="fakeimage">
             <img
@@ -61,7 +70,7 @@ class Card extends Component {
           </div>
            <div className="post-action-panal">
              <div onClick={this.openPopUp.bind(this, this.props.item)} className="four columns post-action"><a className="post-action-button">1 <img className="post-action-button-icon" src={reply} alt="icon"/></a></div>
-             <div className="four columns post-action"><a className="post-action-button">{this.props.item.retweet_count} <img className="post-action-button-icon" src={reTweet} alt="icon"/></a></div>
+             <div onClick={this.retweet.bind(this, this.props.item)} className="four columns post-action"><a className="post-action-button">{this.props.item.retweet_count} <img className="post-action-button-icon" src={reTweet} alt="icon"/></a></div>
              <div className="four columns post-action"><a className="post-action-button">{this.props.item.favorite_count} <img className="post-action-button-icon" src={rate} alt="icon"/></a></div>
            </div>
            <div>

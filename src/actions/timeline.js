@@ -125,3 +125,34 @@ export function replyToTweet(tweet, tweetId) {
         );
     }
 }
+
+export function reTweet(item) {
+
+    var cb = new Codebird();
+    cb.setConsumerKey('JeXsJLwL2FQachen6NWNkA1EZ', 'xMeOQmrFc1XGtbHcG5cnCSqCvEPjbb5YoLZ2Jz72BwleqJEthn');
+    //debugger;
+    return function (dispatch) {
+        cb.setToken(localStorage.getItem('token'), localStorage.getItem('token_secret')); // see above
+        cb.__call(
+            `statuses_retweet_ID`,
+            { "id": item.id_str },
+            function (reply, rate, err) {
+                console.log(reply);
+                if (err) {
+                    dispatch({
+                        type: TimeLineTypes.RETWEET_ERROR,
+                        payload: "An error occured while retweeting"
+                    });
+                } else {
+                    dispatch({
+                        type: TimeLineTypes.RETWEET_SUCCESS,
+                        payload: "You have been successfully retweeted",
+                        id: item.id_str
+                    });
+                }
+            }
+        );
+
+
+    }
+}

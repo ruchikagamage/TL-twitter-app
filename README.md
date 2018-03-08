@@ -13,3 +13,19 @@ In the project directory, you can run:
 
 After installing those node packages run below command to execute the project.
 ### `npm start`
+
+
+## Issue with retweet
+
+ `
+ `statuses_retweet_ID`,
+ id=${item.id}`,
+ `
+ In this case i just used wrong ID {item.id}
+
+`
+`statuses_retweet_ID`,
+{ "id": item.id_str },
+ `
+
+ there was another id for retweet {item.id_str }
